@@ -3,62 +3,73 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hope Alive - Support for Nigeria</title>
+    <title>Hope Alive - Support for Survivors</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 </head>
 <body>
 
     <nav class="navbar">
-        <div class="logo-container">
-            <img src="https://via.placeholder.com/50" alt="Hope Alive Logo">
-            <span>HOPE ALIVE</span>
+        <div class="logo-area">
+            <img src="IMG-20260222-WA0000.jpg" alt="Hope Alive Logo" class="main-logo">
         </div>
-        <div class="menu-icon"><i class="fas fa-bars"></i></div>
+        <div class="menu-toggle">
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
     </nav>
 
-    <section class="hero-section">
-        <div class="hero-overlay">
+    <section class="hero-banner">
+        <div class="hero-text">
             <h1>HOPE FOR SURVIVORS</h1>
             <p>of Christian Genocide in Nigeria</p>
         </div>
     </section>
 
-    <section class="fundraising">
-        <h3>Target Fund Raising</h3>
-        <h2 class="target-amount">$<span id="counter" data-target="357000">0</span>.00</h2>
+    <section class="goal-container">
+        <p class="goal-label">Target Fund Raising</p>
+        <h2 class="amount-display">$<span id="counter" data-target="357000">0</span>.00</h2>
         
-        <div class="progress-wrapper">
-            <div class="progress-container">
-                <div class="progress-bar" id="progress-bar">31%</div>
+        <div class="progress-box">
+            <div class="progress-track">
+                <div class="progress-fill" id="bar-fill">31%</div>
             </div>
         </div>
 
-        <div class="action-buttons">
-            <button class="btn btn-green" onclick="openPaymentModal()">Donate Now</button>
-            <button class="btn btn-outline">Share</button>
+        <div class="button-row">
+            <button class="btn btn-donate" onclick="openPaymentModal()">Donate Now</button>
+            <button class="btn btn-share">Share</button>
         </div>
     </section>
 
-    <section class="story-container">
-        <div class="story-card">
+    <section class="content-wrapper">
+        <div class="info-card">
             <h3>Our Story</h3>
             <p>At the Hope Alive Foundation, we believe that no act of violence should have the final say in a person's story. Our mission is to stand in the gap for persecuted and displaced communities in Nigeria's Middle Belt and Northern regions, transforming sites of devastation into centers of recovery and resilience.</p>
         </div>
     </section>
 
-    <section class="donations-container">
-        <div class="donations-card">
+    <section class="content-wrapper">
+        <div class="feed-card">
             <h3>Recent Donations</h3>
-            <div class="donation-list" id="donation-feed">
+            <div id="live-feed">
                 </div>
         </div>
     </section>
 
-    <footer>
-        (c) 2026 Hope Alive | All Rights Reserved
+    <footer class="site-footer">
+        <p>(c) 2026 Hope Alive | All Rights Reserved</p>
     </footer>
+
+    <div id="payment-modal" class="modal">
+        <div class="modal-body">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <h4>Select Provider</h4>
+            <button class="provider-btn" onclick="payWithPaystack()">Paystack</button>
+            <button class="provider-btn" onclick="payWithPaga()">Paga</button>
+        </div>
+    </div>
 
     <script src="script.js"></script>
 </body>
-  </html>
+            </html>
