@@ -1,51 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Support Nigeria</title>
-  <link rel="stylesheet" href="style.css"/>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hope Alive - Support for Nigeria</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 </head>
 <body>
-  <section class="hero">
-    <div class="overlay">
-      <h1>Stand Against Christian Genocide in Nigeria</h1>
-      <p>Your support can save lives</p>
-    </div>
-  </section>
 
-  <section class="donation-progress">
-    <h2>Target: $100,000</h2>
-    <div class="counter">
-      <span id="amount">$0</span>
-    </div>
-    <div class="progress-bar">
-      <div id="progress-fill"></div>
-    </div>
-    <div class="cta-buttons">
-      <button onclick="share()">Share</button>
-      <button onclick="donate()">Donate</button>
-    </div>
-  </section>
+    <nav class="navbar">
+        <div class="logo-container">
+            <img src="https://via.placeholder.com/50" alt="Hope Alive Logo">
+            <span>HOPE ALIVE</span>
+        </div>
+        <div class="menu-icon"><i class="fas fa-bars"></i></div>
+    </nav>
 
-  <section class="story">
-    <h2>Why We Need Your Help</h2>
-    <p>
-      In Nigeria, countless Christian communities face persecution, displacement, and violence. Families are torn apart, churches destroyed, and lives lost. This campaign aims to raise awareness and provide direct support—food, shelter, medical aid—to those affected. Every dollar you give brings hope and healing to survivors of this ongoing tragedy.
-    </p>
-  </section>
+    <section class="hero-section">
+        <div class="hero-overlay">
+            <h1>HOPE FOR SURVIVORS</h1>
+            <p>of Christian Genocide in Nigeria</p>
+        </div>
+    </section>
 
-  <section class="donation-feed">
-    <h2>Recent Donations</h2>
-    <ul id="donation-list">
-      <!-- Donations will be injected here -->
-    </ul>
-  </section>
+    <section class="fundraising">
+        <h3>Target Fund Raising</h3>
+        <h2 class="target-amount">$<span id="counter" data-target="357000">0</span>.00</h2>
+        
+        <div class="progress-wrapper">
+            <div class="progress-container">
+                <div class="progress-bar" id="progress-bar">31%</div>
+            </div>
+        </div>
 
-  <footer>
-    <p>&copy; 2026 Support Nigeria Initiative</p>
-  </footer>
+        <div class="action-buttons">
+            <button class="btn btn-green" onclick="openPaymentModal()">Donate Now</button>
+            <button class="btn btn-outline">Share</button>
+        </div>
+    </section>
 
-  <script src="script.js"></script>
+    <section class="story-container">
+        <div class="story-card">
+            <h3>Our Story</h3>
+            <p>At the Hope Alive Foundation, we believe that no act of violence should have the final say in a person's story. Our mission is to stand in the gap for persecuted and displaced communities in Nigeria's Middle Belt and Northern regions, transforming sites of devastation into centers of recovery and resilience.</p>
+        </div>
+    </section>
+
+    <section class="donations-container">
+        <div class="donations-card">
+            <h3>Recent Donations</h3>
+            <div class="donation-list" id="donation-feed">
+                </div>
+        </div>
+    </section>
+
+    <footer>
+        (c) 2026 Hope Alive | All Rights Reserved
+    </footer>
+
+    <script src="script.js"></script>
 </body>
-</html>
+  </html>
