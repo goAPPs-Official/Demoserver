@@ -1,49 +1,46 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // 1. Animated Counter
+    // 1. Counter Logic
     const counter = document.getElementById('counter');
-    const target = +counter.getAttribute('data-target');
+    const target = 357000;
+    let count = 0;
     
-    const countUp = () => {
-        const count = +counter.innerText.replace(/,/g, '');
-        const inc = target / 100;
-
-        if (count < target) {
-            const nextVal = Math.ceil(count + inc);
-            counter.innerText = nextVal.toLocaleString();
-            setTimeout(countUp, 20);
-        } else {
+    const increment = target / 50;
+    const timer = setInterval(() => {
+        count += increment;
+        if (count >= target) {
             counter.innerText = target.toLocaleString();
+            clearInterval(timer);
+        } else {
+            counter.innerText = Math.floor(count).toLocaleString();
         }
-    };
-    countUp();
+    }, 30);
 
-    // 2. Donation Feed Population
-    const feed = document.getElementById('donation-feed');
-    const donors = [
+    // 2. Feed Population
+    const feed = document.getElementById('live-feed');
+    const recentDonations = [
         { name: "Anonymous Donor", amount: "$85" },
         { name: "Anonymous Donor", amount: "$104" },
         { name: "Anonymous Donor", amount: "$793" },
         { name: "Anonymous Donor", amount: "$500" }
     ];
 
-    donors.forEach(donor => {
-        const div = document.createElement('div');
-        div.className = 'donation-item';
-        div.innerHTML = `
-            <div class="donor-info">
+    recentDonations.forEach(don => {
+        const row = document.createElement('div');
+        row.className = 'feed-item';
+        row.innerHTML = `
+            <div class="donor-meta">
                 <i class="fas fa-user-circle"></i>
-                <div style="text-align: left;">
-                    <strong>${donor.name}</strong><br>
-                    <span>${donor.amount}</span>
+                <div style="text-align:left">
+                    <strong>${don.name}</strong><br>
+                    <small>${don.amount}</small>
                 </div>
             </div>
-            <button class="donate-btn-sm">Donate Now</button>
+            <button class="btn btn-donate" style="padding: 5px 15px; font-size: 0.8rem">Donate Now</button>
         `;
-        feed.appendChild(div);
+        feed.appendChild(row);
     });
 });
 
-function openPaymentModal() {
-    // You would trigger the Payment Selection Modal from the previous step here
-    alert("Redirecting to Payment Selection...");
-}
+// Modal Controls
+function openPaymentModal() { document.getElementById('payment-modal').style.display = 'flex'; }
+function closeModal() { document.getElementById('payment-modal').style.display = 'none'; }
