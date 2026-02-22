@@ -1,79 +1,253 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Support Nigeria: Stand Against Genocide</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Support Nigeria: Stand Against Genocide</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      line-height: 1.6;
+      background: #f9f9f9;
+      color: #333;
+    }
+
+    /* Navbar */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: #b22222;
+      color: #fff;
+      padding: 10px 20px;
+      z-index: 1000;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .menu-icon {
+      font-size: 24px;
+      cursor: pointer;
+    }
+    .nav-links {
+      list-style: none;
+      margin: 0;
+      padding: 20px;
+      position: fixed;
+      top: 0;
+      right: -250px;
+      width: 250px;
+      height: 100%;
+      background: #b22222;
+      flex-direction: column;
+      gap: 20px;
+      transition: right 0.4s ease;
+      border-radius: 0 0 0 8px;
+      z-index: 1000;
+    }
+    .nav-links.show { right: 0; }
+    .nav-links li { margin: 10px 0; }
+    .nav-links a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 18px;
+    }
+    .nav-links a:hover { color: #ffd700; }
+    @media (min-width: 768px) {
+      .menu-icon { display: none; }
+      .nav-links {
+        position: static;
+        flex-direction: row;
+        gap: 20px;
+        width: auto;
+        height: auto;
+        background: none;
+        transition: none;
+      }
+    }
+    .menu-overlay {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.5);
+      z-index: 999;
+      display: none;
+      transition: opacity 0.4s ease;
+    }
+    .menu-overlay.show { display: block; opacity: 1; }
+
+    /* Hero */
+    .hero {
+      background: url('african-image.jpg') no-repeat center center;
+      background-size: cover;
+      background-attachment: fixed;
+      color: #fff;
+      text-align: center;
+      padding: 80px 20px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero .overlay {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: linear-gradient(to bottom, rgba(0,0,0,0.4), rgba(0,0,0,0.7));
+      z-index: 1;
+      opacity: 0;
+      animation: overlayFadeIn 1.5s ease forwards;
+    }
+    @keyframes overlayFadeIn { from {opacity:0;} to {opacity:1;} }
+    .hero-text { position: relative; z-index: 2; }
+    .hero-text h1 { font-size: 2rem; margin: 0; }
+    .hero-text p { font-size: 1rem; margin-top: 10px; }
+    .scroll-link { color: #ffd700; text-decoration: underline; }
+    .scroll-link:hover { color: #fff; }
+
+    /* Progress section */
+    .progress {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 40px 20px;
+    }
+    .progress h2 { margin-bottom: 20px; font-size: 1.5rem; }
+    .progress-bar {
+      width: 80%; max-width: 400px;
+      background: #ddd;
+      border-radius: 8px;
+      overflow: hidden;
+      height: 25px;
+      margin-bottom: 15px;
+    }
+    .progress-fill {
+      background: #b22222;
+      height: 100%;
+      width: 0;
+      transition: width 1.5s ease-in-out;
+    }
+    .progress p { font-size: 1rem; }
+
+    /* Sections */
+    section {
+      padding: 20px;
+      background: #fff;
+      margin: 20px;
+      border-radius: 8px;
+    }
+
+    /* CTA buttons */
+    .cta-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      padding: 20px;
+    }
+    .cta-buttons button {
+      background: #b22222;
+      color: #fff;
+      border: none;
+      padding: 12px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+      transform: translateY(100%);
+      animation: slideUp 0.6s ease forwards;
+    }
+    .cta-buttons button:hover { background: #8b1a1a; }
+    @keyframes slideUp {
+      from { transform: translateY(100%); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    /* Back to Top */
+    .back-to-top {
+      display: none;
+      position: fixed;
+      bottom: 30px; right: 20px;
+      background: #b22222;
+      color: #fff;
+      border: none;
+      padding: 12px 18px;
+      border-radius: 50px;
+      cursor: pointer;
+      font-size: 14px;
+      z-index: 1000;
+      opacity: 0;
+      transform: translateY(100%);
+      transition: opacity 0.4s ease, transform 0.4s ease;
+    }
+    .back-to-top.show {
+      display: block;
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .back-to-top:hover { background: #8b1a1a; }
+
+    /* Fade-in */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    }
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .fade-in.delay-1 { transition-delay: 0.2s; }
+    .fade-in.delay-2 { transition-delay: 0.4s; }
+    .fade-in.delay-3 { transition-delay: 0.6s; }
+    .fade-in.delay-4 { transition-delay: 0.8s; }
+  </style>
 </head>
 <body>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="menu-icon" id="menuIcon">&#9776;</div>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#about">About Us</a></li>
+      <li><a href="#gallery">Gallery</a></li>
+      <li><a href="#donationForm">Donate</a></li>
+    </ul>
+  </nav>
+  <div id="menuOverlay" class="menu-overlay"></div>
 
-    <header class="hero">
-        <div class="hero-overlay">
-            <div class="hero-content">
-                <h1>Voices for the Vanquished</h1>
-                <p>Standing with the Christian communities of Nigeria facing unprecedented violence. Your silence is their shadow; your support is their light.</p>
-                <a href="#donate" class="btn btn-primary">Stand With Them</a>
-            </div>
-        </div>
-    </header>
+  <!-- Hero -->
+  <header class="hero">
+    <div class="overlay"></div>
+    <div class="hero-text">
+      <h1>Restore Hope for Survivors</h1>
+      <p><a href="#story" class="scroll-link">Our Story</a></p>
+    </div>
+  </header>
 
-    <section class="goal-section" id="donate">
-        <div class="container">
-            <h2>Current Relief Funding</h2>
-            <div class="counter-container">
-                <span class="currency">$</span>
-                <span id="amount-counter" data-target="150000">0</span>
-                <p class="goal-text">Target Goal: $500,000</p>
-            </div>
-            
-            <div class="progress-container">
-                <div class="progress-bar" id="progress-bar" style="width: 0%;">
-                    <span id="percent-text">0%</span>
-                </div>
-            </div>
+  <!-- Progress -->
+  <section class="progress fade-in">
+    <h2>Relief Fund Progress</h2>
+    <div class="progress-bar">
+      <div class="progress-fill" id="progressFill"></div>
+    </div>
+    <p id="progressText">$150,000 raised of $500,000 goal (30%)</p>
+  </section>
 
-            <div class="cta-group">
-                <button class="btn btn-donate">Donate Now</button>
-                <button class="btn btn-share"><i class="fas fa-share-alt"></i> Share Story</button>
-            </div>
-        </div>
-    </section>
+  <!-- Story -->
+  <section id="story" class="story fade-in">
+    <h2 class="fade-in delay-1">Maryam’s Story</h2>
+    <p class="fade-in delay-2">
+      Maryam, a mother from Plateau State, lost her home during an attack.
+      She now lives in a makeshift camp with her children. Your donations
+      provide food, medical care, and shelter for survivors like her.
+    </p>
+  </section>
 
-    <section class="story-section">
-        <div class="container grid">
-            <div class="story-text">
-                <span class="subtitle">Their Reality</span>
-                <h2>Beyond the Headlines</h2>
-                <p>In the Middle Belt and Northern regions of Nigeria, thousands of believers have lost their homes, their churches, and their lives. This is not just conflict; for many families, it is a systematic erasure of their faith and heritage.</p>
-                <p>Meet Maryam, a mother of three from Plateau State. When her village was attacked at dawn, she lost everything but her children. Today, she lives in a makeshift camp, relying on the grace of strangers. Your donation provides food, medical care, and secure shelter for survivors like Maryam.</p>
-            </div>
-            <div class="story-image">
-                <img src="https://images.unsplash.com/photo-1547113110-33318991448b?q=80&w=1000&auto=format&fit=crop" alt="Impacted community">
-            </div>
-        </div>
-    </section>
-
-    <section class="feed-section">
-        <div class="container">
-            <h2>Recent Supporters</h2>
-            <div class="donation-wall" id="donation-wall">
-                </div>
-        </div>
-    </section>
-
-    <footer>
-        <div class="container">
-            <p>&copy; 2026 Relief for Nigeria. All rights reserved.</p>
-            <div class="socials">
-                <a href="#"><i class="fab fa-facebook"></i></a>
-                <a href="#"><i class="fab fa-twitter"></i></a>
-                <a href="#"><i class="fab fa-instagram"></i></a>
-            </div>
-        </div>
-    </footer>
-
-    <script src="script.js"></script>
-</body>
-</html>
+  <!-- Donations -->
+  <section class="donations fade-in">
+    <h2>Recent Donations</h2>
+    <ul id="donationList">
+      <li><strong>Anonymous</strong>: $50 (2 minutes ago)</li>
+      <li><strong>Sarah J.</strong>: $250 (15 minutes ago)</li>
+      <li><strong>Saint Mark’s Parish</strong>: $1,
