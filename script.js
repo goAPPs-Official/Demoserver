@@ -1,50 +1,45 @@
-document.addEventListener('DOMContentLoaded', () => {
-    // 1. Counter Logic
-    const counter = document.getElementById('amount-counter');
-    const target = +counter.getAttribute('data-target');
-    const goal = 500000;
-    
-    const updateCount = () => {
-        const count = +counter.innerText;
-        const speed = 200; 
-        const inc = target / speed;
+let targetAmount = 100000;
+let currentAmount = 0;
+let donations = [
+  { name: "John Doe", amount: 50 },
+  { name: "Jane Smith", amount: 100 },
+  { name: "Anonymous", amount: 25 }
+];
 
-        if (count < target) {
-            counter.innerText = Math.ceil(count + inc);
-            setTimeout(updateCount, 10);
-        } else {
-            counter.innerText = target.toLocaleString();
-        }
-    };
+function animateCounter() {
+  let display = document.getElementById("amount");
+  let progress = document.getElementById("progress-fill");
+  let increment = targetAmount / 200;
 
-    updateCount();
+  let interval = setInterval(() => {
+    if (currentAmount < 35000) {
+      currentAmount += increment;
+      display.textContent = `$${Math.floor(currentAmount).toLocaleString()}`;
+      progress.style.width = `${(currentAmount / targetAmount) * 100}%`;
+    } else {
+      clearInterval(interval);
+    }
+  }, 20);
+}
 
-    // 2. Progress Bar Logic
-    const progress = (target / goal) * 100;
-    const bar = document.getElementById('progress-bar');
-    const percentText = document.getElementById('percent-text');
-    
-    setTimeout(() => {
-        bar.style.width = `${progress}%`;
-        percentText.innerText = `${Math.round(progress)}%`;
-    }, 500);
+function populateDonations() {
+  const list = document.getElementById("donation-list");
+  donations.forEach(d => {
+    let item = document.createElement("li");
+    item.textContent = `${d.name} donated $${d.amount}`;
+    list.appendChild(item);
+  });
+}
 
-    // 3. Fake Donation Feed for Demo
-    const wall = document.getElementById('donation-wall');
-    const donations = [
-        { name: "Anonymous", amount: 50, time: "2 mins ago" },
-        { name: "Sarah J.", amount: 250, time: "15 mins ago" },
-        { name: "Saint Mark's Parish", amount: 1000, time: "1 hour ago" },
-        { name: "David O.", amount: 20, time: "3 hours ago" }
-    ];
+function share() {
+  alert("Share this campaign on social media!");
+}
 
-    donations.forEach(don => {
-        const item = document.createElement('div');
-        item.className = 'feed-item';
-        item.innerHTML = `
-            <span><strong>${don.name}</strong> donated</span>
-            <span>$${don.amount} <small style="color:#888; margin-left:10px">${don.time}</small></span>
-        `;
-        wall.appendChild(item);
-    });
-});
+function donate() {
+  alert("Redirecting to donation page...");
+}
+
+window.onload = () => {
+  animateCounter();
+  populateDonations();
+};
