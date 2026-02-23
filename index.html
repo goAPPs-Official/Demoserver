@@ -1,40 +1,61 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hope Alive - Support for Nigeria</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-</head>
-<body>
+<header class="main-header">
+    <div class="nav-container">
+        <a href="#" onclick="navigateTo('home')">
+            <img src="IMG-20260222-WA0000.jpg" alt="Hope Alive Logo" class="nav-logo">
+        </a>
+        <nav class="nav-links" id="navLinks">
+            <a href="#" onclick="navigateTo('home')">Home</a>
+            <a href="#" onclick="navigateTo('about')">About Us</a>
+            <a href="#" onclick="navigateTo('gallery')">Gallery</a>
+            <a href="#" onclick="navigateTo('home')" class="nav-cta">Donate</a>
+        </nav>
+        <div class="menu-icon" onclick="toggleMenu()"><i class="fas fa-bars"></i></div>
+    </div>
+</header>
 
-    <header class="main-header">
-        <img src="IMG-20260222-WA0000.jpg" alt="Hope Alive Logo" class="nav-logo">
-        <div class="menu-btn"><i class="fas fa-bars"></i></div>
-    </header>
+<div id="app">
+    <section id="home-page" class="page-section">
+        <section class="hero-banner">
+             <div class="hero-overlay">
+                <div class="hero-text">
+                    <h1>HOPE FOR SURVIVORS</h1>
+                    <p>of Christian Genocide in Nigeria</p>
+                </div>
+            </div>
+        </section>
+        </section>
 
-    <section class="hero-container">
-        <div class="hero-overlay">
-            <div class="hero-content">
-                <h1>HOPE FOR SURVIVORS</h1>
-                <p>of Christian Genocide in Nigeria</p>
+    <section id="about-page" class="page-section" style="display:none;">
+        <div class="page-hero">
+            <h1>About Hope Alive</h1>
+        </div>
+        <div class="container mt-neg">
+            <div class="info-card">
+                <h2>Our Mission</h2>
+                <p>We exist to provide a lifeline to Christian communities in Nigeria facing targeted violence.</p>
+            </div>
+            <div class="info-card mt-20">
+                <h3>Contact Us</h3>
+                <form id="contact-form" class="contact-form">
+                    <input type="text" placeholder="Full Name" required>
+                    <input type="email" placeholder="Email" required>
+                    <textarea placeholder="Message" rows="4"></textarea>
+                    <button type="submit" class="btn btn-green w-100">Send</button>
+                </form>
             </div>
         </div>
     </section>
 
-    <section class="goal-section">
-        <p class="target-label">Target Fund Raising</p>
-        <h2 class="total-amount">$<span id="counter" data-target="357000">0</span>.00</h2>
-        
-        <div class="progress-container">
-            <div class="progress-track">
-                <div class="progress-bar" id="fill-bar">31%</div>
+    <section id="gallery-page" class="page-section" style="display:none;">
+        <div class="container">
+            <div class="info-card">
+                <h2>Gallery</h2>
+                <div class="usage-grid" id="gallery-grid">
+                    </div>
             </div>
         </div>
-
-        <div class="btn-group">
-            <button class="btn btn-donate" onclick="openPaymentModal()">Donate Now</button>
+    </section>
+</div>            <button class="btn btn-donate" onclick="openPaymentModal()">Donate Now</button>
             <button class="btn btn-share">Share</button>
         </div>
     </section>
