@@ -27,7 +27,7 @@ body {
 /* Hero Section */
 .hero-container {
     height: 250px;
-    background: url('Hope Alive.jpg') center/cover no-repeat;
+    background: url('Hope Alive.png') center/cover no-repeat;
     position: relative;
 }
 .hero-overlay {
