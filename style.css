@@ -1,40 +1,62 @@
-.page-section {
-    animation: fadeIn 0.4s ease-in-out;
+:root {
+    --green: #4caf50;
+    --orange: #ff7043;
+    --mint-bg: #f2fde4;
+    --white: #ffffff;
+    --dark: #333;
 }
 
-.mt-neg { margin-top: -50px !important; }
-.mt-20 { margin-top: 20px; }
+body { margin: 0; background-color: var(--mint-bg); font-family: 'Segoe UI', sans-serif; overflow-x: hidden; }
 
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
+/* Navigation */
+.main-header { background: var(--white); position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+.nav-container { max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 10px 20px; }
+.nav-logo { height: 50px; cursor: pointer; }
+.nav-links { display: flex; gap: 20px; align-items: center; }
+.nav-links a { text-decoration: none; color: var(--dark); font-weight: 600; cursor: pointer; transition: 0.3s; }
+.nav-links a:hover { color: var(--green); }
+.nav-cta { background: var(--green); color: white !important; padding: 8px 15px; border-radius: 5px; }
+
+/* Hero & Content */
+.hero-banner { 
+    height: 350px; 
+    background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.1) 100%), url('Hope Alive.jpg') center/cover no-repeat;
+    display: flex; align-items: center; justify-content: center; color: white; text-align: center;
 }
+.hero-text h1 { font-size: 2rem; letter-spacing: 2px; }
 
-.hero-banner {
-    /* Ensure the background image is path-correct */
-    background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0) 60%), 
-                url('Hope Alive.jpg') center/cover no-repeat;
-}    align-items: center;
-    justify-content: center;
-}
-.hero-content { text-align: center; color: white; }
-.hero-content h1 { font-size: 1.8rem; margin-bottom: 5px; letter-spacing: 1px; }
-.hero-content p { font-size: 1rem; margin: 0; font-weight: 300; }
-
-/* Goal Section */
 .goal-section { text-align: center; padding: 40px 20px; }
-.target-label { font-weight: bold; margin-bottom: 5px; }
-.total-amount { font-size: 2.5rem; margin-bottom: 20px; }
-.progress-container { width: 100%; max-width: 320px; margin: 0 auto 20px; }
-.progress-track { background: var(--white); border-radius: 20px; border: 1px solid #ccc; height: 18px; overflow: hidden; }
-.progress-bar { 
-    background: var(--orange); width: 31%; height: 100%; 
-    color: white; font-size: 10px; display: flex; align-items: center; justify-content: center; 
-}
+.total-amount { font-size: 3rem; margin: 10px 0; }
 
-/* Buttons */
-.btn-group { display: flex; justify-content: center; gap: 15px; }
-.btn { padding: 12px 25px; border-radius: 8px; font-weight: bold; border: none; cursor: pointer; }
+/* Cards */
+.container { max-width: 800px; margin: 0 auto; padding: 0 20px; }
+.mt-neg { margin-top: -60px !important; }
+.info-card, .donation-card { background: var(--white); padding: 30px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); text-align: center; margin-bottom: 30px; }
+
+/* UI Elements */
+.progress-track { background: #eee; border-radius: 20px; height: 20px; overflow: hidden; max-width: 400px; margin: 20px auto; border: 1px solid #ddd; }
+.progress-bar { background: var(--orange); width: 31%; height: 100%; color: white; display: flex; align-items: center; justify-content: center; font-size: 12px; }
+.btn { border: none; padding: 12px 30px; border-radius: 8px; font-weight: bold; cursor: pointer; transition: 0.3s; }
+.btn-green { background: var(--green); color: white; }
+.btn-donate { background: var(--green); color: white; }
+.btn-share { background: transparent; border: 2px solid var(--orange); color: var(--orange); margin-left: 10px; }
+
+/* Gallery */
+.usage-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-top: 20px; }
+.gallery-img { width: 100%; border-radius: 10px; }
+.gallery-placeholder { background: #eee; height: 200px; border-radius: 10px; display: flex; align-items: center; justify-content: center; color: #999; }
+
+/* Loader & Modal */
+.loader-overlay { position: fixed; inset: 0; background: rgba(255,255,255,0.9); z-index: 2000; display: flex; align-items: center; justify-content: center; }
+.spinner { width: 40px; height: 40px; border: 4px solid #f3f3f3; border-top: 4px solid var(--green); border-radius: 50%; animation: spin 1s linear infinite; }
+@keyframes spin { 100% { transform: rotate(360deg); } }
+
+/* Mobile */
+@media (max-width: 768px) {
+    .nav-links { display: none; flex-direction: column; position: absolute; top: 70px; left: 0; width: 100%; background: white; padding: 20px; }
+    .nav-links.active { display: flex; }
+    .menu-icon { display: block; }
+}.btn { padding: 12px 25px; border-radius: 8px; font-weight: bold; border: none; cursor: pointer; }
 .btn-donate { background: var(--green); color: white; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
 .btn-share { background: transparent; border: 2px solid var(--orange); color: var(--orange); }
 
