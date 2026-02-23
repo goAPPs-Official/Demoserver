@@ -9,9 +9,7 @@
 </head>
 <body>
 
-    <div id="loader" class="loader-overlay">
-        <div class="spinner"></div>
-    </div>
+    <div id="loader" class="loader-overlay"><div class="spinner"></div></div>
 
     <header class="main-header">
         <div class="nav-container">
@@ -19,18 +17,32 @@
                 <img src="IMG-20260222-WA0000.jpg" alt="Hope Alive Logo" class="nav-logo">
             </div>
             
-            <nav class="nav-links" id="navLinks">
+            <nav class="desktop-nav">
                 <a href="javascript:void(0)" onclick="navigateTo('home')">Home</a>
                 <a href="javascript:void(0)" onclick="navigateTo('about')">About Us</a>
                 <a href="javascript:void(0)" onclick="navigateTo('gallery')">Gallery</a>
                 <a href="javascript:void(0)" onclick="navigateTo('home')" class="nav-cta">Donate Now</a>
             </nav>
 
-            <div class="menu-icon" onclick="toggleMenu()">
+            <div class="menu-icon" onclick="toggleSidebar(true)">
                 <i class="fas fa-bars"></i>
             </div>
         </div>
     </header>
+
+    <div id="sidebar-overlay" class="sidebar-overlay" onclick="toggleSidebar(false)"></div>
+    <div id="side-menu" class="side-menu">
+        <div class="side-menu-header">
+            <img src="IMG-20260222-WA0000.jpg" alt="Logo" class="nav-logo">
+            <i class="fas fa-times close-icon" onclick="toggleSidebar(false)"></i>
+        </div>
+        <nav class="side-nav-links">
+            <a href="javascript:void(0)" onclick="navigateTo('home')">Home</a>
+            <a href="javascript:void(0)" onclick="navigateTo('about')">About Us</a>
+            <a href="javascript:void(0)" onclick="navigateTo('gallery')">Gallery</a>
+            <a href="javascript:void(0)" onclick="navigateTo('home')" class="nav-cta-side">Donate Now</a>
+        </nav>
+    </div>
 
     <main id="app">
         <section id="home-page" class="page-section">
@@ -46,13 +58,9 @@
             <section class="fundraising-panel">
                 <p class="label">Target Fund Raising</p>
                 <h2 class="main-amount">$<span id="counter" data-target="357000">0</span>.00</h2>
-                
                 <div class="progress-box">
-                    <div class="progress-bar-bg">
-                        <div class="progress-fill">31%</div>
-                    </div>
+                    <div class="progress-bar-bg"><div class="progress-fill">31%</div></div>
                 </div>
-
                 <div class="action-row">
                     <button class="btn btn-primary" onclick="openPaymentModal()">Donate Now</button>
                     <button class="btn btn-secondary">Share</button>
@@ -62,71 +70,39 @@
             <section class="content-block">
                 <div class="card story-card">
                     <h3>Our Story</h3>
-                    <p>At the Hope Alive Foundation, we believe that no act of violence should have the final say in a person's story. Our mission is to stand in the gap for persecuted and displaced communities in Nigeria's Middle Belt and Northern regions, transforming sites of devastation into centers of recovery and resilience.</p>
+                    <p>At the Hope Alive Foundation, we stand in the gap for persecuted communities in Nigeria's Middle Belt, transforming sites of devastation into centers of recovery.</p>
                 </div>
-            </section>
-
-            <section class="content-block">
-                <div class="card list-card">
+                <div class="card list-card mt-20">
                     <h3>Recent Donations</h3>
-                    <div id="donation-list">
-                        </div>
+                    <div id="donation-list"></div>
                 </div>
             </section>
         </section>
 
         <section id="about-page" class="page-section" style="display:none;">
-            <div class="sub-hero">
-                <h1>About Us</h1>
-            </div>
+            <div class="sub-hero"><h1>About Us</h1></div>
             <div class="content-block mt-minus">
                 <div class="card">
                     <h2>Our Mission</h2>
-                    <p>We provide emergency relief and long-term support to victims of religious persecution. We believe in rebuilding not just homes, but lives.</p>
-                </div>
-                
-                <div class="card mt-20">
-                    <h3>Contact Us</h3>
-                    <form class="contact-form" onsubmit="event.preventDefault(); alert('Message sent!');">
-                        <input type="text" placeholder="Your Name" required>
-                        <input type="email" placeholder="Your Email" required>
-                        <textarea placeholder="How can we help?" rows="4" required></textarea>
-                        <button type="submit" class="btn btn-primary w-100">Send Message</button>
-                    </form>
+                    <p>We provide emergency relief and trauma healing for survivors.</p>
                 </div>
             </div>
         </section>
 
         <section id="gallery-page" class="page-section" style="display:none;">
-            <div class="sub-hero">
-                <h1>Gallery</h1>
-            </div>
+            <div class="sub-hero"><h1>Gallery</h1></div>
             <div class="content-block mt-minus">
                 <div class="card">
-                    <div class="gallery-grid">
-                        <img src="Nigerian-funeral-2.jpg" alt="Mission Context">
-                        <div class="photo-placeholder">Mission 2</div>
-                        <div class="photo-placeholder">Mission 3</div>
-                        <div class="photo-placeholder">Mission 4</div>
-                    </div>
+                    <img src="Nigerian-funeral-2.jpg" style="width:100%; border-radius:15px;" alt="Mission">
                 </div>
             </div>
         </section>
     </main>
 
-    <div id="payment-modal" class="modal-backdrop" style="display:none;">
-        <div class="modal-box">
-            <span class="close-x" onclick="closeModal()">&times;</span>
-            <h4>Select Payment Provider</h4>
-            <div class="gateway-list">
-                <button class="btn-gateway" onclick="process('Paystack')">Paystack</button>
-                <button class="btn-gateway" onclick="process('Paga')">Paga</button>
-            </div>
-        </div>
-    </div>
-
     <footer class="site-footer">
-        <p>(c) 2026 Hope Alive | All Rights Reserved</p>
+        <div class="footer-content">
+            <p>(c) 2026 Hope Alive | All Rights Reserved</p>
+        </div>
     </footer>
 
     <script src="script.js"></script>
