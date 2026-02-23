@@ -3,129 +3,75 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hope Alive | Support for Survivors</title>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <title>Hope Alive - Support for Nigeria</title>
     <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 </head>
+<div id="loader" class="loader-overlay" style="display: none;">
+    <div class="spinner"></div>
+</div>
 <body>
-
-    <div id="loader" class="loader-overlay">
-        <div class="spinner"></div>
-    </div>
 
     <header class="main-header">
         <div class="nav-container">
-            <div class="logo-box" onclick="navigateTo('home')">
+            <a href="index.html">
                 <img src="IMG-20260222-WA0000.jpg" alt="Hope Alive Logo" class="nav-logo">
-            </div>
+            </a>
             
             <nav class="nav-links" id="navLinks">
-                <a href="javascript:void(0)" onclick="navigateTo('home')">Home</a>
-                <a href="javascript:void(0)" onclick="navigateTo('about')">About Us</a>
-                <a href="javascript:void(0)" onclick="navigateTo('gallery')">Gallery</a>
-                <a href="javascript:void(0)" onclick="navigateTo('home')" class="nav-cta">Donate Now</a>
+                <a href="index.html">Home</a>
+                <a href="about.html">About Us</a>
+                <a href="gallery.html">Gallery</a>
+                <a href="index.html#donate" class="nav-cta">Donate</a>
             </nav>
-
+    
             <div class="menu-icon" onclick="toggleMenu()">
                 <i class="fas fa-bars"></i>
             </div>
         </div>
     </header>
 
-    <main id="app">
-        <section id="home-page" class="page-section">
-            <div class="hero-container">
-                <div class="hero-gradient-overlay">
-                    <div class="hero-content">
-                        <h1>HOPE FOR SURVIVORS</h1>
-                        <p>of Christian Genocide in Nigeria</p>
-                    </div>
-                </div>
-            </div>
-
-            <section class="fundraising-panel">
-                <p class="label">Target Fund Raising</p>
-                <h2 class="main-amount">$<span id="counter" data-target="357000">0</span>.00</h2>
-                
-                <div class="progress-box">
-                    <div class="progress-bar-bg">
-                        <div class="progress-fill">31%</div>
-                    </div>
-                </div>
-
-                <div class="action-row">
-                    <button class="btn btn-primary" onclick="openPaymentModal()">Donate Now</button>
-                    <button class="btn btn-secondary">Share</button>
-                </div>
-            </section>
-
-            <section class="content-block">
-                <div class="card story-card">
-                    <h3>Our Story</h3>
-                    <p>At the Hope Alive Foundation, we believe that no act of violence should have the final say in a person's story. Our mission is to stand in the gap for persecuted and displaced communities in Nigeria's Middle Belt and Northern regions, transforming sites of devastation into centers of recovery and resilience.</p>
-                </div>
-            </section>
-
-            <section class="content-block">
-                <div class="card list-card">
-                    <h3>Recent Donations</h3>
-                    <div id="donation-list">
-                        </div>
-                </div>
-            </section>
-        </section>
-
-        <section id="about-page" class="page-section" style="display:none;">
-            <div class="sub-hero">
-                <h1>About Us</h1>
-            </div>
-            <div class="content-block mt-minus">
-                <div class="card">
-                    <h2>Our Mission</h2>
-                    <p>We provide emergency relief and long-term support to victims of religious persecution. We believe in rebuilding not just homes, but lives.</p>
-                </div>
-                
-                <div class="card mt-20">
-                    <h3>Contact Us</h3>
-                    <form class="contact-form" onsubmit="event.preventDefault(); alert('Message sent!');">
-                        <input type="text" placeholder="Your Name" required>
-                        <input type="email" placeholder="Your Email" required>
-                        <textarea placeholder="How can we help?" rows="4" required></textarea>
-                        <button type="submit" class="btn btn-primary w-100">Send Message</button>
-                    </form>
-                </div>
-            </div>
-        </section>
-
-        <section id="gallery-page" class="page-section" style="display:none;">
-            <div class="sub-hero">
-                <h1>Gallery</h1>
-            </div>
-            <div class="content-block mt-minus">
-                <div class="card">
-                    <div class="gallery-grid">
-                        <img src="Nigerian-funeral-2.jpg" alt="Mission Context">
-                        <div class="photo-placeholder">Mission 2</div>
-                        <div class="photo-placeholder">Mission 3</div>
-                        <div class="photo-placeholder">Mission 4</div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <div id="payment-modal" class="modal-backdrop" style="display:none;">
-        <div class="modal-box">
-            <span class="close-x" onclick="closeModal()">&times;</span>
-            <h4>Select Payment Provider</h4>
-            <div class="gateway-list">
-                <button class="btn-gateway" onclick="process('Paystack')">Paystack</button>
-                <button class="btn-gateway" onclick="process('Paga')">Paga</button>
+    <section class="hero-container">
+        <div class="hero-overlay">
+            <div class="hero-content">
+                <h1>HOPE FOR SURVIVORS</h1>
+                <p>of Christian Genocide in Nigeria</p>
             </div>
         </div>
-    </div>
+    </section>
 
-    <footer class="site-footer">
+    <section class="goal-section">
+        <p class="target-label">Target Fund Raising</p>
+        <h2 class="total-amount">$<span id="counter" data-target="357000">0</span>.00</h2>
+        
+        <div class="progress-container">
+            <div class="progress-track">
+                <div class="progress-bar" id="fill-bar">31%</div>
+            </div>
+        </div>
+
+        <div class="btn-group">
+            <button class="btn btn-donate" onclick="openPaymentModal()">Donate Now</button>
+            <button class="btn btn-share">Share</button>
+        </div>
+    </section>
+
+    <section class="card-section">
+        <div class="story-card">
+            <h3>Our Story</h3>
+            <p>At the Hope Alive Foundation, we believe that no act of violence should have the final say in a person's story. Our mission is to stand in the gap for persecuted and displaced communities in Nigeria's Middle Belt and Northern regions, transforming sites of devastation into centers of recovery and resilience.</p>
+        </div>
+    </section>
+
+    <section class="card-section">
+        <div class="donation-card">
+            <h3>Recent Donations</h3>
+            <div id="donation-feed">
+                </div>
+        </div>
+    </section>
+
+    <footer class="footer">
         <p>(c) 2026 Hope Alive | All Rights Reserved</p>
     </footer>
 

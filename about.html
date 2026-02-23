@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Hope Alive</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="nav-container">
+            <a href="index.html">
+                <img src="IMG-20260222-WA0000.jpg" alt="Hope Alive Logo" class="nav-logo">
+            </a>
+            
+            <nav class="nav-links" id="navLinks">
+                <a href="index.html">Home</a>
+                <a href="about.html">About Us</a>
+                <a href="gallery.html">Gallery</a>
+                <a href="index.html#donate" class="nav-cta">Donate</a>
+            </nav>
+    
+            <div class="menu-icon" onclick="toggleMenu()">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>   
+
+    <section class="page-hero">
+        <h1>About Hope Alive</h1>
+        <p>Restoring dignity to the displaced and persecuted.</p>
+    </section>
+
+    <main class="container">
+        <div class="card about-card">
+            <i class="fas fa-hands-helping brand-icon"></i>
+            <h2>Who we Are</h2>
+            <p>Founded by Stanley and a team of dedicated local responders, Hope Alive was born from a refusal to stay silent while families were being erased by extremist violence. We are a grassroots humanitarian organization committed to providing immediate life-saving intervention and long-term restorative care to those targeted by banditry and systemic attacks.</p>
+        </div>
+
+        <div class="card about-card">
+            <i class="fas fa-hands-helping brand-icon"></i>
+            <h2>Our Vision</h2>
+            <p>At the Hope Alive Foundation, we believe that no act of violence should have the final say in a person’s story. Our mission is to stand in the gap for persecuted and displaced communities in Nigeria’s Middle Belt and Northern regions, transforming sites of devastation into centers of recovery and resilience.</p>
+        </div>
+
+        <div class="card about-card">
+            <i class="fas fa-hands-helping brand-icon"></i>
+            <h2>Our Mission</h2>
+            <p>Restoring hope to survivors and victims of religious crisis and genocide in Nigeria.</p>
+        </div>
+
+        <div class="card about-card">
+            <i class="fas fa-shield-alt brand-icon"></i>
+            <h2>Our 4 Pillars of Restoration</h2>
+            <p>TWe don’t just deliver aid; we rebuild lives. Our work is centered on four essential needs:</p>
+            <ul class="values-list">
+                <li><strong>Crisis Intervention:</strong> Rapid deployment of food, clean water, and emergency shelter to families fleeing active conflict zones.</li>
+                <li><strong>Holistic Healing:</strong> Providing both physical medical care for the wounded and specialized trauma counseling to mend the invisible scars of war.</li>
+                <li><strong>Economic Rebirth:</strong> Helping farmers return to their ancestral lands with seed distribution, tool kits, and the materials needed to rebuild charred homes.</li>
+                <li><strong>Community Advocacy:</strong> Being a voice for the voiceless by documenting the crisis and ensuring the global community hears the truth about the persecution in Nigeria.</li>
+            </ul>
+        </div>
+
+        <div class="card about-card">
+            <i class="fas fa-hands-helping brand-icon"></i>
+            <h2>Our Core Values</h2>
+            <p>Dignity Above All: We serve victims not as "refugees," but as neighbors. Every kit we deliver and every house we roof is an act of restoring a person’s inherent worth.
+                Radical Transparency: We honor our donors by ensuring every cent is accounted for. We believe that those who give their hard-earned money deserve to see the faces and stories of the lives they have changed.
+                Local Partnership: By working with verified local leaders and vigilante support networks, we ensure our aid reaches the most "unreachable" areas safely and effectively.
+                </p>
+        </div>
+
+        <div class="card about-card">
+            <h2>How Your Donations Are Used</h2>
+            <div class="usage-grid">
+                <div class="usage-item">
+                    <i class="fas fa-utensils"></i>
+                    <span>Food & Water</span>
+                </div>
+                <div class="usage-item">
+                    <i class="fas fa-clinic-medical"></i>
+                    <span>Medical Care</span>
+                </div>
+                <div class="usage-item">
+                    <i class="fas fa-home"></i>
+                    <span>Emergency Shelter</span>
+                </div>
+                <div class="usage-item">
+                    <i class="fas fa-book"></i>
+                    <span>Education</span>
+                </div>
+            </div>
+        </div>
+    </main>
+    <section class="container">
+        <div class="card about-card">
+            <h2>Contact Us</h2>
+            <p>Have questions about our relief efforts or want to partner with us? Reach out below.</p>
+            
+            <form id="contact-form" class="contact-form">
+                <div class="form-group">
+                    <input type="text" id="name" placeholder="Full Name" required>
+                </div>
+                <div class="form-group">
+                    <input type="email" id="email" placeholder="Email Address" required>
+                </div>
+                <div class="form-group">
+                    <textarea id="message" rows="5" placeholder="Your Message" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-green w-100">Send Message</button>
+            </form>
+            <div id="form-status" class="form-status"></div>
+        </div>
+    </section>
+    <footer class="footer">
+        <p>(c) 2026 Hope Alive | All Rights Reserved</p>
+    </footer>
+
+</body>
+</html>

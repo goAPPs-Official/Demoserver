@@ -1,97 +1,313 @@
 :root {
     --green: #4caf50;
     --orange: #ff7043;
-    --bg-mint: #f1fceb;
+    --mint-bg: #f2fde4;
     --white: #ffffff;
-    --dark: #333;
 }
 
 body {
     margin: 0;
-    font-family: 'Segoe UI', Tahoma, sans-serif;
-    background-color: var(--bg-mint);
-    color: var(--dark);
-    overflow-x: hidden;
+    background-color: var(--mint-bg);
+    color: #333;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
-
-/* Loader */
-.loader-overlay {
-    position: fixed; inset: 0; background: var(--white);
-    display: flex; justify-content: center; align-items: center; z-index: 3000;
-}
-.spinner {
-    width: 45px; height: 45px; border: 5px solid #eee;
-    border-top: 5px solid var(--green); border-radius: 50%;
-    animation: spin 0.8s linear infinite;
-}
-@keyframes spin { 100% { transform: rotate(360deg); } }
 
 /* Header */
 .main-header {
-    background: var(--white); height: 75px;
-    position: sticky; top: 0; z-index: 1000;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    background: var(--white);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    height: 70px;
 }
-.nav-container {
-    max-width: 1100px; margin: 0 auto; height: 100%;
-    display: flex; justify-content: space-between; align-items: center; padding: 0 20px;
-}
-.nav-logo { height: 60px; cursor: pointer; }
+.nav-logo { height: 60px; }
+.menu-btn { font-size: 1.5rem; color: #444; }
 
-.nav-links { display: flex; gap: 20px; align-items: center; }
-.nav-links a { text-decoration: none; color: var(--dark); font-weight: 600; }
-.nav-cta { background: var(--green); color: white !important; padding: 10px 18px; border-radius: 8px; }
-
-/* Hero Section with Bottom-to-Top Dark Gradient */
+/* Hero Section */
 .hero-container {
-    height: 300px;
-    background: url('Nigerian-funeral-2.jpg') center/cover no-repeat;
+    height: 250px;
+    background: url('Hope Alive.jpg') center/cover no-repeat;
     position: relative;
 }
-.hero-gradient-overlay {
-    height: 100%; width: 100%;
-    /* Dark bottom to transparent top */
-    background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.5) 50%, rgba(0,0,0,0.2) 100%);
-    display: flex; align-items: center; justify-content: center; text-align: center; color: white;
+.hero-overlay {
+    background: rgba(0, 0, 0, 0.4);
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
-.hero-content h1 { font-size: 1.8rem; letter-spacing: 1px; margin: 0; }
+.hero-content { text-align: center; color: white; }
+.hero-content h1 { font-size: 1.8rem; margin-bottom: 5px; letter-spacing: 1px; }
+.hero-content p { font-size: 1rem; margin: 0; font-weight: 300; }
 
-/* Content Cards */
-.content-block { padding: 0 20px 30px; max-width: 600px; margin: 0 auto; }
-.mt-minus { margin-top: -50px; }
-.card {
-    background: var(--white); padding: 30px; border-radius: 20px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.05); text-align: center;
+/* Goal Section */
+.goal-section { text-align: center; padding: 40px 20px; }
+.target-label { font-weight: bold; margin-bottom: 5px; }
+.total-amount { font-size: 2.5rem; margin-bottom: 20px; }
+.progress-container { width: 100%; max-width: 320px; margin: 0 auto 20px; }
+.progress-track { background: var(--white); border-radius: 20px; border: 1px solid #ccc; height: 18px; overflow: hidden; }
+.progress-bar { 
+    background: var(--orange); width: 31%; height: 100%; 
+    color: white; font-size: 10px; display: flex; align-items: center; justify-content: center; 
 }
-.card h3 { border-bottom: 3px solid var(--orange); display: inline-block; padding-bottom: 5px; margin-bottom: 20px; }
-
-/* Fundraising UI */
-.fundraising-panel { text-align: center; padding: 40px 20px; }
-.main-amount { font-size: 2.8rem; margin: 10px 0; }
-.progress-bar-bg { background: #eee; height: 18px; border-radius: 10px; overflow: hidden; max-width: 350px; margin: 0 auto; }
-.progress-fill { background: var(--orange); width: 31%; height: 100%; color: white; font-size: 11px; display: flex; align-items: center; justify-content: center; }
 
 /* Buttons */
-.btn { border: none; padding: 12px 28px; border-radius: 10px; font-weight: bold; cursor: pointer; transition: 0.3s; }
-.btn-primary { background: var(--green); color: white; }
-.btn-secondary { background: transparent; border: 2px solid var(--orange); color: var(--orange); }
+.btn-group { display: flex; justify-content: center; gap: 15px; }
+.btn { padding: 12px 25px; border-radius: 8px; font-weight: bold; border: none; cursor: pointer; }
+.btn-donate { background: var(--green); color: white; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+.btn-share { background: transparent; border: 2px solid var(--orange); color: var(--orange); }
 
-/* Donation Row */
-.donation-item {
-    background: #f9f9f9; display: flex; justify-content: space-between; align-items: center;
-    padding: 15px; margin-bottom: 12px; border-radius: 15px;
+/* Story & Donation Cards */
+.card-section { padding: 0 20px 30px; }
+.story-card, .donation-card {
+    background: #f8f8f8;
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+    text-align: center;
 }
-.donor-info { display: flex; align-items: center; gap: 12px; }
-.donor-info i { font-size: 2.2rem; color: #7c86c1; }
+.story-card h3, .donation-card h3 { 
+    margin-bottom: 20px; 
+    border-bottom: 2px solid var(--orange); 
+    display: inline-block; 
+}
+.story-card p { font-size: 0.95rem; line-height: 1.6; color: #555; }
 
-/* Responsive Menu */
-.menu-icon { display: none; font-size: 1.5rem; }
+/* Feed Item */
+.feed-row {
+    background: var(--white);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px;
+    margin-bottom: 12px;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.02);
+}
+.donor-box { display: flex; align-items: center; gap: 12px; }
+.donor-box i { font-size: 2rem; color: #7c86c1; }
+
+.footer { background: #333; color: white; text-align: center; padding: 20px; font-size: 0.8rem; }
+/* About Page Specific Styles */
+.page-hero {
+    background-color: var(--green);
+    color: white;
+    text-align: center;
+    padding: 60px 20px;
+}
+
+.page-hero h1 { font-size: 2.2rem; margin-bottom: 10px; }
+
+.container {
+    max-width: 800px;
+    margin: -40px auto 40px;
+    padding: 0 20px;
+}
+
+.about-card {
+    background: white;
+    margin-bottom: 30px;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.05);
+    text-align: center;
+}
+
+.brand-icon {
+    font-size: 3rem;
+    color: var(--orange);
+    margin-bottom: 20px;
+}
+
+.values-list {
+    text-align: left;
+    list-style: none;
+    display: inline-block;
+    padding: 0;
+}
+
+.values-list li {
+    margin: 15px 0;
+    padding-left: 30px;
+    position: relative;
+}
+
+.values-list li::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: var(--green);
+    font-weight: bold;
+}
+
+.usage-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    margin-top: 30px;
+}
+
+.usage-item {
+    background: var(--mint-bg);
+    padding: 20px;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    font-weight: bold;
+    color: var(--dark-text);
+}
+
+.usage-item i {
+    font-size: 1.5rem;
+    color: var(--green);
+}
+
+/* Mobile Adjustments */
+@media (max-width: 600px) {
+    .container { margin-top: 20px; }
+    .usage-grid { grid-template-columns: 1fr; }
+}
+/* Contact Form Styles */
+.contact-form {
+    margin-top: 25px;
+    text-align: left;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.contact-form input, 
+.contact-form textarea {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background: #fdfdfd;
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+.contact-form input:focus, 
+.contact-form textarea:focus {
+    border-color: var(--green);
+}
+
+.w-100 {
+    width: 100%;
+    margin-top: 10px;
+}
+
+.form-status {
+    margin-top: 15px;
+    font-size: 0.9rem;
+    font-weight: bold;
+}
+
+.status-success { color: var(--green); }
+.status-error { color: var(--orange); }
+/* Navigation Styling */
+.main-header {
+    background: var(--white);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.nav-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+}
+
+.nav-logo { height: 55px; }
+
+.nav-links {
+    display: flex;
+    gap: 25px;
+    align-items: center;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--dark-text);
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: 0.3s;
+}
+
+.nav-links a:hover {
+    color: var(--green);
+}
+
+.nav-cta {
+    background: var(--green);
+    color: white !important;
+    padding: 8px 18px;
+    border-radius: 5px;
+}
+
+/* Mobile Menu Logic */
+.menu-icon {
+    display: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
 
 @media (max-width: 768px) {
-    .nav-links {
-        display: none; position: absolute; top: 75px; left: 0; width: 100%;
-        background: white; flex-direction: column; padding: 20px; box-shadow: 0 10px 10px rgba(0,0,0,0.1);
-    }
-    .nav-links.active { display: flex; }
     .menu-icon { display: block; }
+    
+    .nav-links {
+        display: none; /* Hidden by default on mobile */
+        flex-direction: column;
+        position: absolute;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        background: white;
+        padding: 20px;
+        box-shadow: 0 10px 10px rgba(0,0,0,0.1);
+        gap: 15px;
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+}
+/* Loader Styles */
+.loader-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.9);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.spinner {
+    width: 50px;
+    height: 50px;
+    border: 5px solid #f3f3f3;
+    border-top: 5px solid var(--green);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
 }
