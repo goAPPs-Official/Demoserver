@@ -1,69 +1,75 @@
-// Sidebar Toggle Logic
-function toggleSidebar(show) {
-    const menu = document.getElementById('side-menu');
-    const overlay = document.getElementById('sidebar-overlay');
-    if (show) {
-        menu.classList.add('active');
-        overlay.style.display = 'block';
-    } else {
-        menu.classList.remove('active');
-        overlay.style.display = 'none';
-    }
-}
-
-// Navigation Router with Auto-Hide Side Menu
+// SPA Navigation with Spinner
 function navigateTo(pageId) {
-    // 1. Auto-hide menu if navigating
-    toggleSidebar(false);
-    
     const loader = document.getElementById('loader');
     loader.style.display = 'flex';
 
     setTimeout(() => {
+        // Hide all sections
         document.querySelectorAll('.page-section').forEach(p => p.style.display = 'none');
+        // Show target
         document.getElementById(pageId + '-page').style.display = 'block';
+        
         window.scrollTo(0, 0);
         loader.style.display = 'none';
-        
-        if (pageId === 'home') initCounter();
-    }, 450);
+
+        if (pageId === 'home') startCounter();
+    }, 500);
 }
 
-// Initializing the Donation Feed
+// Mobile Menu
+function toggleMenu() {
+    document.getElementById('navLinks').classList.toggle('active');
+}
+
+// Donation Counter
+function startCounter() {
+    const counter = document.getElementById('counter');
+    const target = 357000;
+    let current = 0;
+    const step = target / 60;
+
+    const timer = setInterval(() => {
+        current += step;
+        if (current >= target) {
+            counter.innerText = target.toLocaleString();
+            clearInterval(timer);
+        } else {
+            counter.innerText = Math.floor(current).toLocaleString();
+        }
+    }, 20);
+}
+
+// Initial Load
 document.addEventListener('DOMContentLoaded', () => {
     const list = document.getElementById('donation-list');
-    const donors = [
+    const logs = [
         { name: "Anonymous Donor", amount: "$85" },
         { name: "Anonymous Donor", amount: "$104" },
         { name: "Anonymous Donor", amount: "$793" },
         { name: "Anonymous Donor", amount: "$500" }
     ];
 
-    donors.forEach(d => {
+    logs.forEach(log => {
         list.innerHTML += `
-            <div class="donation-item" style="display:flex; justify-content:space-between; align-items:center; background:#f5f5f5; padding:12px; border-radius:15px; margin-bottom:10px;">
-                <div style="display:flex; align-items:center; gap:12px;">
-                    <i class="fas fa-user-circle" style="font-size:2rem; color:#7c86c1;"></i>
-                    <div style="text-align:left"><strong>${d.name}</strong><br><small>${d.amount}</small></div>
+            <div class="donation-item">
+                <div class="donor-info">
+                    <i class="fas fa-user-circle"></i>
+                    <div style="text-align:left">
+                        <strong>${log.name}</strong><br><small>${log.amount}</small>
+                    </div>
                 </div>
-                <button class="btn btn-primary" style="padding: 5px 12px; font-size: 12px; border-radius:5px;">Donate Now</button>
+                <button class="btn btn-primary" style="padding: 5px 12px; font-size: 12px;">Donate Now</button>
             </div>
         `;
     });
+
+    setTimeout(() => {
+        document.getElementById('loader').style.display = 'none';
+        startCounter();
+    }, 800);
 });
 
-// Counter Logic
-function initCounter() {
-    const counter = document.getElementById('counter');
-    const target = 357000;
-    let val = 0;
-    const interval = setInterval(() => {
-        val += 7000;
-        if (val >= target) {
-            counter.innerText = target.toLocaleString();
-            clearInterval(interval);
-        } else {
-            counter.innerText = val.toLocaleString();
-        }
-    }, 30);
-}
+// Modal Logic
+function openPaymentModal() { document.getElementById('payment-modal').style.display = 'flex'; }
+function closeModal() { document.getElementById('payment-modal').style.display = 'none'; }
+function process(vendor) { alert("Opening " + vendor + " Gateway..."); closeModal(); }
